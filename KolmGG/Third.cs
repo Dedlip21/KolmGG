@@ -36,13 +36,14 @@ namespace KolmGG
         Label lbl;
         Label firstClicked = null;
         Label secondClicked = null;
-        Timer timer;
+        Timer timer, gameTimer;
+        public int taps = 0;
 
         bool choose = ChooseMode.chooseMode;
 
         public Third()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
 
             this.Size = new Size(550, 550);
@@ -154,20 +155,29 @@ namespace KolmGG
                 }
                 MessageBox.Show("You matched all the icons!", "Congratulations");
                 Close();
-            }else if(choose == true)
+            }
+            else if(choose == true)
             {
-                foreach (Control control in TLP1.Controls)
+                if(taps <= 14)
                 {
-                    Label iconLabel = control as Label;
-
-                    if (iconLabel != null)
+                    foreach (Control control in TLP1.Controls)
                     {
-                        if (iconLabel.ForeColor == iconLabel.BackColor)
-                            return;
+                        Label iconLabel = control as Label;
+
+                        if (iconLabel != null)
+                        {
+                            if (iconLabel.ForeColor == iconLabel.BackColor)
+                                return;
+                        }
                     }
+                    MessageBox.Show("You matched all the icons!", "Congratulations");
+                    Close();
+                }else if(taps > 14)
+                {
+                    MessageBox.Show("You lost the game. Your tries run out!", "Try again");
+                    Close();
                 }
-                MessageBox.Show("You matched all the icons!", "Congratulations");
-                Close();
+                
             }
             
         }
@@ -193,6 +203,7 @@ namespace KolmGG
                 }
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
+                taps += 1;
 
                 // Check to see if the player won
                 CheckForWinner();

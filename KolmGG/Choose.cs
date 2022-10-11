@@ -13,6 +13,7 @@ namespace KolmGG
     public partial class Choose : Form
     {
         Button btn1, btn2, btn3, btn4;
+        
         public Choose()
         {
             FlowLayoutPanel FlowLayoutPanel1 = new FlowLayoutPanel();
@@ -21,10 +22,10 @@ namespace KolmGG
             btn3 = new Button();
             btn4 = new Button();
 
-            btn1.Text = "First";
-            btn2.Text = "Second";
-            btn3.Text = "Third";  
-            btn4.Text = "Close";
+            btn1.Text = "Pildi vaatamine";
+            btn2.Text = "Matemaatika test";
+            btn3.Text = "Mälumäng";  
+            btn4.Text = "Välja";
 
             btn1.Click += Btn1_Click;
             btn2.Click += Btn2_Click;

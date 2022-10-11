@@ -20,30 +20,35 @@ namespace KolmGG
         Label selectMode;
         Button selectEasy, selectHard;
 
-        //false = hard
-        //public bool chooseMode;
         public ChooseMode()
         {
             InitializeComponent();
-            this.Size = new Size(150, 150);
+            this.Size = new Size(300, 300);
 
             selectMode = new Label()
             {
                 Text = "Select game mode",
-                Font = new Font("Comic-Sans", 30, FontStyle.Bold),
-                Location = new Point(75, Top),
+                Font = new Font("Comic-Sans", 15, FontStyle.Bold),
+                Location = new Point(50, Top),
+                Size = new Size(200, 50),
+                TextAlign = ContentAlignment.MiddleCenter
             };
             selectEasy = new Button()
             {
-                Text = "Easy mode",
-                Font = new Font("Comic-Sans", 30, FontStyle.Bold),
+                Text = "Easy mode (14 taps)",
+                Font = new Font("Comic-Sans", 10, FontStyle.Bold),
                 Location = new Point(50, 75),
+                Size = new Size(80, 50),
+                ImageAlign = ContentAlignment.MiddleRight
+
             };
             selectHard = new Button
             {
                 Text = "Hard mode",
-                Font = new Font("Comic-Sans", 30, FontStyle.Bold),
-                Location = new Point(100, 75),
+                Font = new Font("Comic-Sans", 10, FontStyle.Bold),
+                Location = new Point(130, 75),
+                Size = new Size(80, 50),
+                ImageAlign = ContentAlignment.MiddleLeft
             };
 
             selectHard.Click += SelectHard_Click;
@@ -59,6 +64,7 @@ namespace KolmGG
         public void SelectEasy_Click(object sender, EventArgs e)
         {
             chooseMode = true;
+
             Third third = new Third();
             third.Show();
 
@@ -68,6 +74,7 @@ namespace KolmGG
         public void SelectHard_Click(object sender, EventArgs e)
         {
             chooseMode = false;
+
             Third third = new Third();
             third.Show();
 
