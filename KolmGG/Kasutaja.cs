@@ -10,6 +10,7 @@ namespace KolmGG
     {
         public int Id { get; set; }
         public string Kasutajanimi { get; set; }
+        public string Parool { get; set; }
         public string Email { get; set; }
         public string Sugu { get; set; }
         public int Vanus { get; set; }

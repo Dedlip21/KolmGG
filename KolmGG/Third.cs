@@ -36,8 +36,9 @@ namespace KolmGG
         Label lbl;
         Label firstClicked = null;
         Label secondClicked = null;
+        Label missesLabel;
         Timer timer, gameTimer;
-        public int taps = 0;
+        public int misses = 6;
 
         bool choose = ChooseMode.chooseMode;
 
@@ -62,6 +63,16 @@ namespace KolmGG
                     Name = "TableLayoutPanel1",
                     TabIndex = 0
                 };
+
+                /*tapsLabel = new Label
+                {
+
+                };*/
+
+                /*gameTimer = new Timer
+                {
+
+                };*/
 
                 timer = new Timer
                 {
@@ -158,7 +169,7 @@ namespace KolmGG
             }
             else if(choose == true)
             {
-                if(taps <= 14)
+                if(misses >= 1)
                 {
                     foreach (Control control in TLP1.Controls)
                     {
@@ -172,7 +183,7 @@ namespace KolmGG
                     }
                     MessageBox.Show("You matched all the icons!", "Congratulations");
                     Close();
-                }else if(taps > 14)
+                }else if(misses < 1)
                 {
                     MessageBox.Show("You lost the game. Your tries run out!", "Try again");
                     Close();
@@ -203,16 +214,20 @@ namespace KolmGG
                 }
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
-                taps += 1;
 
                 // Check to see if the player won
                 CheckForWinner();
 
                 if (firstClicked.Text == secondClicked.Text)
                 {
+
                     firstClicked = null;
                     secondClicked = null;
                     return;
+                }
+                else
+                {
+                    misses -= 1;
                 }
 
 
